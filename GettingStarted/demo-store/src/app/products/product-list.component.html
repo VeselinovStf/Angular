@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        Product List
+        {{title}}
     </div>
 
     <div class="card-body">
@@ -49,7 +49,11 @@
                     <td>{{product.productCode | convertToSpace:  '-'}}</td>
                     <td>{{product.releaseDate }}</td>
                     <td>{{product.price | currency: 'USD' : 'symbol' : '1.2-3'}}</td>
-                    <td>{{product.starRating}}</td>
+                    <td>
+                        <ds-star [rating]='product.starRating' 
+                                 (notify)='onRatingClick($event)'>
+                        </ds-star>
+                    </td>
 
             </tbody>
         </table>

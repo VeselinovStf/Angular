@@ -84,6 +84,10 @@ export class ProductListComponent {
     this.listFilter = 'card';
   }
 
+  onRatingClick(message: string):void{
+    this.title = 'Product List ' + message;
+  }
+
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
