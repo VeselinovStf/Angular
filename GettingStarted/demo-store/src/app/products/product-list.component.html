@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-header">
+        Product List
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-4">
+                <input type="text" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Filtered by:</h4>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table"
+         *ngIf='products && products.length'>
+            <thead>
+                <tr>
+                    <th>
+                        <button class="btn btn-primary">
+                            Show Image
+                        </button>
+                    </th>
+
+                </tr>
+                <th>Products</th>
+                <th>Code</th>
+                <th>Availible</th>
+                <th>Price</th>
+                <th>5 Star Rating</th>
+            </thead>
+            <tbody>
+                <tr *ngFor ='let product of products'>
+                    <td>
+                        <img [src] ='product.imageUrl'
+                             [title] ='product.productName'
+                             [style.width.px]='imageWidth'
+                             [style.margin.px]='imageMargin' >
+                    </td>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productCode}}</td>
+                    <td>{{product.productDate}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.starRating}}</td>
+
+            </tbody>
+        </table>
+    </div>
+</div>
