@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProductService } from './product/product.service';
 import { CategoryService } from './category/category.service';
 import { LoginComponent } from './security/login.component';
+import { AppUserAuth } from './security/app-user-auth';
+import { SecurityService } from './security/security.service';
 
 @NgModule({
   declarations: [
@@ -31,4 +33,6 @@ import { LoginComponent } from './security/login.component';
   providers: [ProductService, CategoryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ 
+ }
