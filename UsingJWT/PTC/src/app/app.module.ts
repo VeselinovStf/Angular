@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductService } from './product/product.service';
 import { CategoryService } from './category/category.service';
+import { LoginComponent } from './security/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CategoryService } from './category/category.service';
     ProductListComponent,
     ProductDetailComponent,
     CategoryListComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
