@@ -14,6 +14,7 @@ import { CategoryService } from './category/category.service';
 import { LoginComponent } from './security/login.component';
 import { AppUserAuth } from './security/app-user-auth';
 import { SecurityService } from './security/security.service';
+import { AuthGuard } from './security/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SecurityService } from './security/security.service';
     CategoryListComponent,
     DashboardComponent,
     LoginComponent
+    
   ],
   imports: [
     BrowserModule,
