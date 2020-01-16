@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -40,6 +41,10 @@ namespace PtcApi
             .AddJsonOptions(options =>
               options.SerializerSettings.ContractResolver =
             new CamelCasePropertyNamesContractResolver());
+
+            services.AddTransient<PtcApi.Security.SecurityManager>();
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

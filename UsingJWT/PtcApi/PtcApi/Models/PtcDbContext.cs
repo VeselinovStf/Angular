@@ -18,8 +18,8 @@ namespace PtcApi.Model
         {
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Category>().ToTable("Category");
-            modelBuilder.Entity<AppUser>().ToTable("Security.User");
-            modelBuilder.Entity<AppUserClaim>().ToTable("Security.UserClaims");
+            modelBuilder.Entity<AppUser>().ToTable("User");
+            modelBuilder.Entity<AppUserClaim>().ToTable("UserClaim");
 
             base.OnModelCreating(modelBuilder);
             
