@@ -32,18 +32,11 @@ namespace PtcApi.Security
                 Guid.NewGuid().ToString()));
 
             // Add custom claims
-            jwtClaims.Add(new Claim("isAuthenticated",
-                authUser.IsAuthenticated.ToString().ToLower()));
-            jwtClaims.Add(new Claim("canAccessProducts",
-                authUser.CanAccessProducts.ToString().ToLower()));
-            jwtClaims.Add(new Claim("canAddProduct",
-                authUser.CanAddProduct.ToString().ToLower()));
-            jwtClaims.Add(new Claim("canSaveProduct",
-                authUser.CanSaveProduct.ToString().ToLower()));
-            jwtClaims.Add(new Claim("canAccessCategories",
-                authUser.CanAccessCategories.ToString().ToLower()));
-            jwtClaims.Add(new Claim("canAddCategory",
-                authUser.CanAddCategory.ToString().ToLower()));
+            // Add custom claims
+            foreach (var claim in authUser.Claims)
+            {
+                jwtClaims.Add(new Claim(claim.ClaimType, claim.ClaimValue));
+            }
 
             // Create the JwtSecurityToken object
             var token = new JwtSecurityToken(
@@ -114,22 +107,9 @@ namespace PtcApi.Security
             ret.BearerToken = new Guid().ToString();
 
             // Get all claims for this user
-            claims = GetUserClaims(authUser);
+            ret.Claims = GetUserClaims(authUser);
 
-            // Loop through all claims and 
-            // set properties of user object
-            foreach (AppUserClaim claim in claims)
-            {
-                try
-                {
-                    // TODO: Check data type of ClaimValue
-                    typeof(AppUserAuth).GetProperty(claim.ClaimType)
-                      .SetValue(ret, Convert.ToBoolean(claim.ClaimValue), null);
-                }
-                catch
-                {
-                }
-            }
+           
 
             // Set JWT bearer token
             ret.BearerToken = BuildJwtToken(ret);
