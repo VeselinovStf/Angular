@@ -114,6 +114,8 @@ namespace PtcApi
                 "http://localhost:4200").AllowAnyMethod().AllowAnyHeader()
             );
 
+            app.UseAuthentication();
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }
