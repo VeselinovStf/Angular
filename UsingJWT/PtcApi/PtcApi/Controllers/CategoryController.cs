@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PtcApi.Model;
@@ -9,6 +10,7 @@ using PtcApi.Model;
 namespace PtcApi.Controllers
 {
   [Route("api/[controller]")]
+  [Authorize]
   public class CategoryController : BaseApiController
   {
         private readonly PtcDbContext db;
