@@ -20,7 +20,7 @@ namespace PtcApi.Controllers
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
         [HttpGet]
-        
+        [Authorize(Policy = "CanAccessProducts")]
         public IActionResult Get()
         {
             IActionResult ret = null;
