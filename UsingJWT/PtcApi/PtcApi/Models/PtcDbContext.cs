@@ -11,11 +11,15 @@ namespace PtcApi.Model
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<AppUser> Users { get; set; }
+        public DbSet<AppUserClaim> Claims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Category>().ToTable("Category");
+            modelBuilder.Entity<AppUser>().ToTable("Security.User");
+            modelBuilder.Entity<AppUserClaim>().ToTable("Security.UserClaims");
 
             base.OnModelCreating(modelBuilder);
             
