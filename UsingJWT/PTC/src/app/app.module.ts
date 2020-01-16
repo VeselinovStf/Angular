@@ -15,6 +15,7 @@ import { LoginComponent } from './security/login.component';
 import { AppUserAuth } from './security/app-user-auth';
 import { SecurityService } from './security/security.service';
 import { AuthGuard } from './security/auth.guard';
+import { HttpInterceptorModule } from './security/http-interceptor.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthGuard } from './security/auth.guard';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpInterceptorModule
   ],
   providers: [ProductService, CategoryService],
   bootstrap: [AppComponent]

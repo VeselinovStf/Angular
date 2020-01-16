@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace PtcApi.Controllers
 {
     [Route("api/[controller]")]
-
+    [Authorize]
     public class ProductController : BaseApiController
     {
         private readonly PtcDbContext db;
@@ -20,7 +20,7 @@ namespace PtcApi.Controllers
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
         [HttpGet]
-        [Authorize]
+        
         public IActionResult Get()
         {
             IActionResult ret = null;
