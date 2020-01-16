@@ -16,6 +16,7 @@ import { AppUserAuth } from './security/app-user-auth';
 import { SecurityService } from './security/security.service';
 import { AuthGuard } from './security/auth.guard';
 import { HttpInterceptorModule } from './security/http-interceptor.module';
+import { HasClaimDirective } from './security/has-claim.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpInterceptorModule } from './security/http-interceptor.module';
     ProductDetailComponent,
     CategoryListComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    HasClaimDirective
     
   ],
   imports: [
