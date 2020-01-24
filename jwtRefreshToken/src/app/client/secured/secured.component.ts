@@ -17,11 +17,14 @@ export class SecuredComponent  {
  
 
   logout() {
-    this.authService.logout()
+    this.authService.logout();
+    this.router.navigate(['/login']);
+    /*
       .subscribe(success => {
         if (success) {
           this.router.navigate(['/login']);
         }
       });
+      */
   }
 }

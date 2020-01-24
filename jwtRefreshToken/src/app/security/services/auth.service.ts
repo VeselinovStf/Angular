@@ -16,14 +16,14 @@ export class AuthService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private loggedUser: string;
 
-  private  apiUrl = "https://localhost:5000/api";
+  private  apiUrl = "http://localhost:5000/api";
 
   constructor(private http: HttpClient) {}
 
-  login(user: { email: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(`${this.apiUrl}/login`, user)
+  login(user: { userName: string, password: string }): Observable<boolean> {
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.email, tokens)),
+        tap(tokens => this.doLoginUser(user.userName, tokens)),
         mapTo(true),
         catchError(error => {
           alert(error.error);
@@ -32,6 +32,8 @@ export class AuthService {
   }
 
   logout() {
+    this.doLogoutUser();
+    /*
     return this.http.post<any>(`${this.apiUrl}/logout`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(
@@ -41,6 +43,7 @@ export class AuthService {
         alert(error.error);
         return of(false);
       }));
+      */
   }
 
   isLoggedIn() {
@@ -48,10 +51,10 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.http.post<any>(`${this.apiUrl}/refresh`, {
+    return this.http.post<any>(`${this.apiUrl}/auth/refreshtoken`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.bearerToken);
+      this.storeJwtToken(tokens.accessToken.token);
     }));
   }
 
@@ -78,7 +81,7 @@ export class AuthService {
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.bearerToken);
+    localStorage.setItem(this.JWT_TOKEN, tokens.accessToken.token);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 

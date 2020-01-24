@@ -1,4 +1,8 @@
 export class Tokens {
-    bearerToken: string;
+  accessToken : {
+    token: string;
+    expiresIn : number
+  }
+   
     refreshToken: string;
   }
